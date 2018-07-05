@@ -1,0 +1,42 @@
+﻿@model IEnumerable<hospital.Models.DataModel.Sick>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>بخش نمایش بیماران</h2>
+
+<table BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" Font-Names="Arabic Typesetting" Font-Size="Large" ForeColor="Black" AllowPaging="True">
+    <tr>
+        <td style=" background-color: #FFFFCC;">نام</td>
+        <td>نام خانوادگی</td>
+        <td style=" background-color: #FFFFCC;">جنسیت</td>
+        <td>سن</td>
+        <td style=" background-color: #FFFFCC;">وضعیت</td>
+        <td>تاریخ ویزیت</td>
+        <td style=" background-color: #FFFFCC;">زمان ویزیت</td>
+        <td>
+
+        </td>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td style=" background-color: #FFFFCC;">@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td style=" background-color: #FFFFCC;">@item.Sex.SexName</td>
+            <td>@item.Age</td>
+            <td style=" background-color: #FFFFCC;">@item.Status.StatusName</td>
+            <td>@item.VisitDate</td>
+            <td style=" background-color: #FFFFCC;">@item.VisitTime</td>
+            <td>
+                @Html.ActionLink(" جزئیات ", "Detail", new { Id = item.Id })
+            </td>
+            <td>-</td>
+            <td>
+                @Html.ActionLink(" ویرایش ","Edit", new { Id = item.Id})
+            </td>
+        </tr>
+    }
+</table>

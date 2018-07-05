@@ -1,0 +1,46 @@
+﻿@model hospital.Models.DataModel.Sick
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>بخش ثبت بیمار</h2>
+
+@using (Html.BeginForm())
+{
+    <table BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" Font-Names="Arabic Typesetting" Font-Size="Large" ForeColor="Black" AllowPaging="True">
+
+        <tr>
+            <td style=" background-color: #FFFFCC;">نام</td>
+            <td style=" background-color: #FFFFCC;">@Html.TextBoxFor(model => model.FirstName)</td>
+        </tr>
+        <tr>
+            <td>نام خانوادگی</td>
+            <td>@Html.TextBoxFor(model => model.LastName)</td>
+        </tr>
+        <tr>
+            <td style=" background-color: #FFFFCC;">جنسیت</td>
+            <td style=" background-color: #FFFFCC;">@Html.DropDownListFor(model => model.SexId, (SelectList)ViewBag.SexId)</td>
+        </tr>
+        <tr>
+            <td>سن</td>
+            <td>@Html.TextBoxFor(model => model.Age)</td>
+        </tr>
+        <tr>
+            <td style=" background-color: #FFFFCC;">وضعیت</td>
+            <td style=" background-color: #FFFFCC;">@Html.DropDownListFor(model => model.StatusId, (SelectList)ViewBag.StatusId)</td>
+        </tr>
+        <tr>
+            <td>تاریخ ویزیت</td>
+            <td>@Html.TextBoxFor(model => model.VisitDate)</td>
+        </tr>
+        <tr>
+            <td style=" background-color: #FFFFCC;">زمان ویزیت</td>
+            <td style=" background-color: #FFFFCC;">@Html.TextBoxFor(model => model.VisitTime)</td>
+        </tr>
+    </table>
+
+    <input type="submit" value="ثبت" />
+
+}
+
+

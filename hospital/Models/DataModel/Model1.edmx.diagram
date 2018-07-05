@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23e19d71f79849d883d2df6f84f7993b" Name="Diagram1">
+        <EntityTypeShape EntityType="hospital.Sex" Width="1.5" PointX="0.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital.Sick" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital.Status" Width="1.5" PointX="2.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital.Type" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital.User" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hospital.Visit" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="hospital.FK_Sick_sex" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital.FK_Sick_status" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital.FK_Visit_Sick" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital.FK_User_type" ManuallyRouted="false" />
+        <AssociationConnector Association="hospital.FK_Visit_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

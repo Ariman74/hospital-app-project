@@ -1,0 +1,67 @@
+﻿@model hospital.Models.DataModel.Sick
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>بخش جزئیات</h2>
+
+<table BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" Font-Names="Arabic Typesetting" Font-Size="Large" ForeColor="Black" AllowPaging="True">
+ 
+    <tr>
+        <td style=" background-color: #FFFFCC;">
+            نام
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
+</tr>
+    <tr>
+        <td>
+            نام خانوادگی
+        </td>
+        <td style=" background-color: #FFFFCC;">
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+</tr>
+    <tr>
+        <td style=" background-color: #FFFFCC;">
+           جنسیت
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Sex.SexName)
+        </td>
+</tr>
+    <tr>
+        <td>
+           سن
+        </td>
+        <td style=" background-color: #FFFFCC;">
+            @Html.DisplayFor(model => model.Age)
+        </td>
+</tr>
+    <tr>
+        <td style=" background-color: #FFFFCC;">
+            وضعیت
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Status.StatusName)
+        </td>
+
+</tr>
+    <tr>
+        <td>
+            تاریخ ویزیت
+        </td>
+        <td style=" background-color: #FFFFCC;">
+            @Html.DisplayFor(model => model.VisitDate)
+        </td>
+</tr>
+    <tr>
+        <td style=" background-color: #FFFFCC;">
+            زمان ویزیت
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.VisitTime)
+        </td>
+</tr>
+</table>

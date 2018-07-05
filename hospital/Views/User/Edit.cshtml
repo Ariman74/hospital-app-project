@@ -1,0 +1,39 @@
+﻿@model hospital.Models.DataModel.User
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>بخش ویرایش</h2>
+
+@using (Html.BeginForm())
+{
+    <table BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" Font-Names="Arabic Typesetting" Font-Size="Large" ForeColor="Black" AllowPaging="True">
+
+        <tr>
+            
+            <td style=" background-color: #FFFFCC;">
+                نام
+        </td>
+            <td style=" background-color: #FFFFCC;">@Html.TextBoxFor(model => model.FirstName)</td>
+</tr>
+        <tr>
+            <td >نام خانوادگی</td>
+            <td>@Html.TextBoxFor(model => model.LastName)</td>
+        </tr>
+        <tr>
+            <td style=" background-color: #FFFFCC;">نام کاربری</td>
+            <td style=" background-color: #FFFFCC;">@Html.TextBoxFor(model => model.UserName)</td>
+        </tr>
+        <tr>
+            <td>رمز عبور</td>
+            <td>@Html.TextBoxFor(model => model.PassWord)</td>
+        </tr>
+        <tr>
+            <td style=" background-color: #FFFFCC;">نقش</td>
+            <td style=" background-color: #FFFFCC;">@Html.DropDownListFor(model => model.TypeId, (SelectList)ViewBag.TypeId)</td>
+        </tr>
+    </table>
+    
+    <input type="submit" value="ثبت" />
+
+}

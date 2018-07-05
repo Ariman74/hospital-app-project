@@ -1,0 +1,27 @@
+﻿@model IEnumerable<hospital.Models.DataModel.User>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>بخش نمایش کاربران</h2>
+
+<table BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" Font-Names="Arabic Typesetting" Font-Size="Large" ForeColor="Black" AllowPaging="True">
+<tr>
+        <td style=" background-color: #FFFFCC;">نام</td>
+        <td>نام خانوادگی</td>
+        <td style=" background-color: #FFFFCC;">نقش</td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style=" background-color: #FFFFCC;">@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td style=" background-color: #FFFFCC;">@item.Type.TypeName</td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

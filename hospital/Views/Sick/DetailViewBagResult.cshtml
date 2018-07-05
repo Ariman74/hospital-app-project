@@ -1,0 +1,43 @@
+﻿@model hospital.Models.DataModel.Sick
+@{
+    ViewBag.Title = "DetailViewBagResult";
+}
+
+<h2>Detail</h2>
+
+
+
+@Html.DisplayNameFor(model => model.FirstName)
+@Html.DisplayFor(model => model.FirstName)
+<br />
+@Html.DisplayNameFor(model => model.LastName)
+@Html.DisplayFor(model => model.LastName)
+<br />
+@Html.DisplayNameFor(model => model.Sex.SexName)
+@Html.DisplayFor(model => model.Sex.SexName)
+<br />
+@Html.DisplayNameFor(model => model.Age)
+@Html.DisplayFor(model => model.Age)
+<br />
+@Html.DisplayNameFor(model => model.Status.StatusName)
+@Html.DisplayFor(model => model.Status.StatusName)
+<br />
+@Html.DisplayNameFor(model => model.VisitDate)
+@Html.DisplayFor(model => model.VisitDate)
+<br />
+@Html.DisplayNameFor(model => model.VisitTime)
+@Html.DisplayFor(model => model.VisitTime)
+<br />
+
+<table>
+    @foreach (var item in (List<Visit>)ViewBag.SicknessName)
+    {
+        <tr>
+            <td>@item.SicknessName</td>
+            <td>@item.MdicineName</td>
+            <td>@item.MdicineHowUse</td>
+            <td>@item.MdicineWhenUse</td>
+        </tr>
+    }
+
+</table>

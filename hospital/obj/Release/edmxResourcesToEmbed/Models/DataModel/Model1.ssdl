@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hospital.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SexName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Sick">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="Age" Type="int" />
+    <Property Name="SexId" Type="int" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="VisitDate" Type="nvarchar(max)" />
+    <Property Name="VisitTime" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="PassWord" Type="nvarchar(max)" />
+    <Property Name="TypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Visit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SickId" Type="uniqueidentifier" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="SicknessName" Type="nvarchar(max)" />
+    <Property Name="MdicineName" Type="nvarchar(max)" />
+    <Property Name="MdicineHowUse" Type="nvarchar(max)" />
+    <Property Name="MdicineWhenUse" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Sick_sex">
+    <End Role="Sex" Type="Self.Sex" Multiplicity="0..1" />
+    <End Role="Sick" Type="Self.Sick" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sex">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sick">
+        <PropertyRef Name="SexId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sick_status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Sick" Type="Self.Sick" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sick">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_type">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visit_Sick">
+    <End Role="Sick" Type="Self.Sick" Multiplicity="0..1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sick">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="SickId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visit_user">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hospitalStoreContainer">
+    <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sick" EntityType="Self.Sick" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visit" EntityType="Self.Visit" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sick_sex" Association="Self.FK_Sick_sex">
+      <End Role="Sex" EntitySet="Sex" />
+      <End Role="Sick" EntitySet="Sick" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sick_status" Association="Self.FK_Sick_status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Sick" EntitySet="Sick" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_type" Association="Self.FK_User_type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visit_Sick" Association="Self.FK_Visit_Sick">
+      <End Role="Sick" EntitySet="Sick" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visit_user" Association="Self.FK_Visit_user">
+      <End Role="User" EntitySet="User" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
